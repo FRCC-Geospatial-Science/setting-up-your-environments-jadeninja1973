@@ -1,4 +1,4 @@
-# Installing Jupyter Notebooks via Anaconda
+# Installing Jupyter Notebooks via Miniconda
 In this section, we will look at the necessary tasks for installing Jupyter Notebooks, the actual place we will be doing a fair amount of the work. Locally, you can access the ArcPy library, which - ironically - we won't be using. The ArcPy library assumes you have at least one Esri product installed on your machine. While one *could* download the ArcPy library, unless it is authorized with a current license file, one cannot actually call/utilize the library.
 
 ArcGIS Pro does come with Jupyter notebooks installed, and most likely, you've used a Pro Notebook by this point in your education. However, this semester will focus solely on open source GIS softwares, meaning we can't just use the ArcGIS Pro notebooks (well, technically, you can pull any locally stored library into an ArcGIS Pro notebook, but you still need that whole authorization thing!).
@@ -6,12 +6,13 @@ ArcGIS Pro does come with Jupyter notebooks installed, and most likely, you've u
 Before we can use Jupyter Notebooks, we need to first install Anaconda as a path to using the notebooks.
 
 ## Contents
-1. <a href="#anaconda-and-jupyter-notebooks">Install Anaconda and the Required Packages</a>
+1. <a href="#anaconda-and-jupyter-notebooks">Install Miniconda and the Required Packages</a>
 2. <a href="#create-a-batch-file-and-set-the-anaconda-prompt-to-always-run-as-an-administrator-windows-10">Create a Batch File to Launch Jupyter Lab Automatically (Optional but recommended)</a>
 3. <a href="#change-the-default-jupyter-notebook-default-browser">Change the Default Notebook Browser (Optional)</a>
 
-## Anaconda and Jupyter Notebooks
-### Install Anaconda
+## Miniconda and Jupyter Notebooks
+Miniconda is a free minimal installer for conda. It is a small, bootstrap version of Anaconda that includes only conda, Python, the packages they depend on, and a small number of other useful packages, including pip, zlib and a few others
+### Install Miniconda
 <table><tbody><tr><td colspan="2">
  <ol><li>Click on the start menu button for you computer</li>
   <li>Search for "Control Panel"</li></ol></td></tr>
@@ -19,14 +20,14 @@ Before we can use Jupyter Notebooks, we need to first install Anaconda as a path
 <ol start="3"><li>Click on Programs and Features (you may need to change the View by: "Categories" to View by: "Large or Small Icons" in the upper right first)</li></ol></td><td><img style="width:50%;" src="https://lh3.googleusercontent.com/pw/AL9nZEWU_unTK-Tp4xSC8mJgkxMq482winqpcrwWtHNfMYL8RgACWDFKVxfA1Mw9ylEJeozXbBghcxiWKYq_LI6hd8F9dP_PeMUXDWUMrXU3g_T3ShrPm0f5keThTxxEOWWbGRbXfJMB_dLFsyQl41mLOVXB=w1125-h738-no?authuser=0" /></td></tr>
 
 <tr><td>
-<ol start="4"><li>In the A's, see if you have Anaconda3 installed, go ahead and uninstall so you can update to the newest version.</li></ol></td><td>
+<ol start="4"><li>In the M's, see if you have Miniconda3 installed. If you do, go ahead and uninstall so you can update to the newest version.</li></ol></td><td>
 <img style="width:50%;" src="https://lh3.googleusercontent.com/pw/AL9nZEV4PF8SHfThiyfWnxXCLHKoAgtCI1g-ByWkqP6129d94_5GjHPoZ4sC1znbuKXUl2JjvQ6UA08XTXLIcP4oZPpe5enLEQNYR34xdxsAEuQvAzoPj3mAmEP0JIaTROAGFmgxJtsCQUzeHz5vC5CBplQf=w1125-h738-no?authuser=0" /></td></tr>
 
 <tr><td  colspan="2"><ol start="5"><li>Close the Programs and Features window</li>
-<li>Visit: https://www.anaconda.com/products/distribution</li>
-<li>Download the most recent Anaconda distribution for Windows</li>
-<li><strong>When installing Anaconda</strong> BE SURE to select "Install Only for Me". This helps later with the environments</li>
-<li>Once the installation is complete, launch an Anaconda Prompt AS AN ADMINISTRATOR (click on the start menu and start typing "Anaconda", once you find the Anaconda Prompt, right click and select "Run as Administrator")</li>
+<li>Visit: [https://www.anaconda.com/products/distribution](https://docs.conda.io/en/latest/miniconda.html)</li>
+<li>Download the most recent Miniconda distribution for Windows</li>
+<li><strong>When installing Miniconda</strong> BE SURE to select "Install Only for Me". This helps later with the environments</li>
+ <li>Once the installation is complete, launch an <strong>Anaconda Prompt</strong> AS AN ADMINISTRATOR (click on the start menu and start typing "Anaconda", once you find the Anaconda Prompt, right click and select "Run as Administrator")</li>
 <li>In the prompt, type <code>conda --version</code>. A version number should be returned (also, you should be able to open an Anaconda command prompt)</li></ol></td></tr>
 <tr><td><ol start="11"><li>Next, still in the Anaconda prompt, change to the directory where your Advanced Analysis folder resides. The easist way to do this is to first find the path of the folder using Windows Explorer, then copy the path from the Address bar (click in the white area to find the whole path)</li><ul><li>I HIGHLY recommend using a folder on the C: drive with no space, for example, C://Users//Yoda//Documents//GIS-3011.  Originally, I was saving everything to my OneDrive folder, which has spaces and is on the D:// of my computer, and GitHub kept throwing "Post 500 - Invalid Credentials" and "Dubious folder" errors, even though I took the time to add the OneDrive folder to the "safe locations" of the Git config file and updating the "credential.store" settings https://renenyffenegger.ch/notes/development/version-control-systems/git/options/safe/directory. In the end, the easiest and most direct fix was simply moving the folder to the C:// drive and removing the spaces.</li></ul></td><td>
 <img style="width:50%;" src="https://lh3.googleusercontent.com/pw/AL9nZEWCwE-OokTEeObiwtzdwatUb9E9vmj12BY-1Pc9oqhiRhHhbEoSSnSdfChY21kh069-1bgASwVe5WEvESSD-pAdkX_4THPKiIp5jC5pMatGKU07OMaz5tofCtk-mYnCFX2VfMc9j3HWaDFQpPGrg5E2=w1095-h371-no?authuser=0" /></td></tr>
@@ -43,7 +44,7 @@ Here is some more information on managing Python environments stored on your com
 Once the environment is created, you will need to activate said environment. This is necessary every time you start Jupyter Lab/Notebooks, but first, you are going to make sure the environments match.</li>
 <ol><li>Find your environment's path with the command <code>conda info --envs</code></li>
 <li>Determine if your environment was installed in one of the accessible conda environments with the command <code>conda config --show envs_dirs</code></li>
- <ul><li>If the allowed path and the installed path match, you're good to go.</li>
+ <ul><li>If the allowed path and the installed path match (before gis-3011), you're good to go.</li>
   <img src="https://lh3.googleusercontent.com/pw/AL9nZEVYvdpAIZisif5zNbEaTX73QWP-YLzeW84vqQ4I-KIDl8S87FnGh5UxI8DSGd0TMkLMlXvPVRYch03Bniej396FgYDs_SzrCyMfnyoDxlQh8DrWUX3B7lmhYwZ1I7FhAOTuKJAK4YpE8yCADFhJFWB3=w1234-h322-no?authuser=0" />
  <li>If it doesn't match, you'll need to add the path that *is* showing (everything before gis-3011) using this command <code>conda config --append envs_dirs /anaconda3/envs</code> (but do change it to the path you're showing). Then run the command <code>conda config --prepend envs_dirs /Users/<user>/anaconda3/envs</code> (be sure to change <user> to your user name!)</li></ul></ol>
 
@@ -74,17 +75,22 @@ so you can just copy and paste the whole command. Make sure it's all on one line
 </tbody></table>
 
 ### Create a Batch File and Set the Anaconda Prompt to Always Run as an Administrator - Windows 10 (Optional, but recommended)
-
-<table><tbody><tr><td colspan="2">
- <ol><li>Start a new text file with either Notepad</li>
- <li>In that Notepad file paste the following, <strong>making sure to change the GIS 3011 path to the appropriate path on your computer</strong></li>
- <ul style="list-style:none;><li">
+A batch file will run a series of commands for you within the Anaconda prompt (actually, they can do anything Windows can do!). This way, you don't have to paste all the information in the box!
+<table><tbody><tr><td>
+ <ol><li>Search for the Anaconda prompt in the Start menu - you'll see some options pop up on the right - and select Open File Location</li></ol></td><td><img src="https://lh3.googleusercontent.com/pw/AL9nZEVCLuX5j5UBFDRvna_QjAECxV4Tuuw053HqjWv_PCN7rNOsgO6YDXz-LSjDl11ZSowpKf6ZrxWelY36MO4jUlteltN8HOQRFCMvNu6559vYI8_5eLloD1rmeoMMYi9EdsuSJacfdTDxq-aGUhmr3lRC=w790-h641-no?authuser=0" /></td></tr>
+ 
+  <tr><td><ol start="2"><li>Open the properties and look at the <strong>Target</strong> line. This will tell you the correct path to the Anaconda prompt. It will start with C: and end with \Scripts\activate.bat  Go ahead and copy the whole line (click inside the line > ctrl+A > ctrl+C)</li></ol></td><td><img src="https://lh3.googleusercontent.com/pw/AL9nZEW7o-PLxIRDfOpxR_RwYnckThGd9bhahwVZMPABZOfvqY7d5gc3ygNWU-AseuLxkah42fZgzOewKHJNF4H9q9JzVgcVDEkMcxYqySEW3BJiG6qoHar-e1gm_bEOifMgiNsLE-4Kmey1_DGm2-DxB38N=w1037-h648-no?authuser=0" /></td></tr>
+   
+<tr><td><ol start="3"><li>Start a new text file with either Notepad then paste the contents of the Target line that you just copied. You don't need all of it, just part of it See screenshot for the bit you do need. Don't worry if the path is different than yours. That's why you went to find the correct path on your computer!.</li></ol></td><td><img src ="https://lh3.googleusercontent.com/pw/AL9nZEWegC0GQ52yx0CHqMzhxL8orxlQwm_Y8JThseL5vLVFKqoAKFhcZ5_aJVU2BMLTGYAS8X8Aj8Y_zb09KxNDwiPdmf7uGfK0A0cUgJxd14yPkdtOZQ32n5S2Tpa791DpJ61fHKKz0nxwprskTs2-vhSg=w862-h123-no?authuser=0" /></td></tr>
+ <tr><td colspan="2"><ol start="4"><li>In that Notepad file paste the following, <strong>making sure to change the GIS 3011 path to the appropriate path on your computer</strong></li>
+ <ul style="list-style:none;"><li>
 <code>@echo on
-call C:\ProgramData\Anaconda3\Scripts\activate.bat
+call C:\ THE PATH TO THE ANACONDA PROMPT - YOU NEED TO FIND ON YOUR MACHINE\Scripts\activate.bat
 call cd C:\Users\Jennifer\Documents\GIS-3011
 call activate gis-3011
 call jupyter lab
 cmd \k</code></li></ul>
+<li>Delete what you pasted earlier (what's currently above "@echo on")</li>
  <li>Save the file to your GIS 3011 folder, naming it JupyterLaunch.bat (change the dropdown in Notepad to *all files)</li>
  </ol></td></tr>
  
